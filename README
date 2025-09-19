@@ -1,47 +1,62 @@
-# KiCad Global Library
+# ⚡ KiCad Global Library
 
 This repository contains my **custom KiCad libraries** (symbols, footprints, 3D models, and templates).  
-It is organized for **reuse across projects** and linked via Git submodules when needed.
+It is designed for **reuse across projects** and can be linked via **Git submodules** for consistency.
 
 ---
 
-## Repository Structure
+## 📂 Repository Structure
 
-- **symbols/**  
-  Each `.kicad_sym` file is a schematic symbol library. Organized by categories (ICs, Passives, Connectors, etc.).  
+```
+symbols/         # .kicad_sym files (schematic symbol libraries)
+footprints/      # .pretty folders (footprint libraries)
+3dmodels/        # STEP/WRL 3D models linked to footprints
+templates/       # project templates (rules, stackups, logos)
+```
 
-- **footprints/**  
-  Each `.pretty` folder is a footprint library, containing `.kicad_mod` footprints. Mirrored structure matches `symbols/`.  
-
-- **3dmodels/**  
-  STEP/WRL files for 3D rendering, linked from footprints.  
-
-- **templates/**  
-  KiCad project templates (`.kicad_pro`, `.kicad_pcb`, etc.) with metadata (`meta/info.html`).  
+- **symbols/** → each `.kicad_sym` file is a schematic symbol library (organized by category).  
+- **footprints/** → each `.pretty` folder is a footprint library containing `.kicad_mod` files. Mirrors the structure of `symbols/`.  
+- **3dmodels/** → STEP/WRL files for 3D rendering, linked from footprints.  
+- **templates/** → KiCad project templates (`.kicad_pro`, `.kicad_pcb`, etc.) with metadata (`meta/info.html`).  
 
 ---
 
-## Using This Library in KiCad
+## 🔗 Using This Library in KiCad
 
-1. **Clone the repo (or add as a submodule in a project):**
-    git clone https://github.com/YourUser/kicad-global-lib.git
+### 1. Clone the repository
+```bash
+git clone https://github.com/YourUser/kicad-global-lib.git
+```
 
-2. **or inside a project**
-    git submodule add https://github.com/YourUser/kicad-global-lib.git library/kicad-global-lib
+### 2. Or add it as a submodule inside a project
+```bash
+git submodule add https://github.com/YourUser/kicad-global-lib.git library/kicad-global-lib
+```
 
-## Configure KiCad paths:
-In Preferences → Configure Paths, add:
+### 3. Configure KiCad paths
+In **Preferences → Configure Paths**, add:
+```
+KICAD_GLOBAL_LIB = /path/to/kicad-global-lib
+```
 
-    KICAD_GLOBAL_LIB = /path/to/kicad-global-lib
+### 4. Add libraries in KiCad
+- **Symbol Libraries:**  
+  `$KICAD_GLOBAL_LIB/symbols/.../*.kicad_sym`  
+- **Footprint Libraries:**  
+  `$KICAD_GLOBAL_LIB/footprints/.../*.pretty`  
+- **Templates:**  
+  `$KICAD_GLOBAL_LIB/templates`  
 
-## Add libraries in KiCad:
+---
 
-    Symbol Libraries: point to $KICAD_GLOBAL_LIB/symbols/.../*.kicad_sym
+## 🤖 Automation (Planned)
 
-    Footprint Libraries: point to $KICAD_GLOBAL_LIB/footprints/.../*.pretty
+A **Python script + Git hook** will be implemented to automatically:
+- Mirror folder structures between `symbols/` and `footprints/`.  
+- Ensure missing symbol/footprint directories are created.  
+- Run before pushing changes to GitHub, keeping the repo consistent.  
 
-    Templates: set path to $KICAD_GLOBAL_LIB/templates
+---
 
-## Automation
-A Python script is being planned to be implemented to allow the folders between symbols and footprints to mirror each other,
-making sure the folder directories match, adding the missing ones to the folder system before pushing via a Git Hook
+## 📜 License
+Choose one (e.g., MIT, CERN-OHL, or private use).
