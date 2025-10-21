@@ -1,0 +1,13 @@
+# KiCad backups/temp
+*.bak
+*.bck
+*-backups/
+*.kicad_prl
+*.tmp
+*.net
+*.xml
+
+# OS junk
+.DS_Store
+Thumbs.db
+EOF

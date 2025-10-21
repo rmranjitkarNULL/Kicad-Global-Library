@@ -1,0 +1,12 @@
+* text=auto eol=lf
+# Normalize all text files to LF line endings (prevents Windows ↔ Linux mismatches)
+
+*.step binary
+*.stp  binary
+*.wrl  binary
+*.3dshapes/* binary
+# Marks 3D models as binary so Git doesn’t try to diff or auto-convert line endings
+
+*.kicad_mod text eol=lf
+*.kicad_sym text eol=lf
+# KiCad footprints and symbols are text-based, so keep them normalized
